@@ -1,15 +1,10 @@
 import { PropsWithChildren } from "react";
-import { ThemeProvider } from "@simplybusiness/mobius-core";
-import {
-  MobiusComponentContext,
-  MobiusComponentContextType,
-  MobiusThemeContext,
-  MobiusThemeContextType,
-} from "./contexts";
+import { ThemeProvider, defaultTheme } from "@simplybusiness/mobius-core";
+import { MobiusComponentContext, MobiusComponentContextType } from "./contexts";
 
 export interface MobiusContextProps {
   components?: MobiusComponentContextType;
-  theme?: MobiusThemeContextType;
+  theme?: typeof defaultTheme;
 }
 
 export function MobiusProvider({
@@ -36,11 +31,7 @@ export function MobiusProvider({
   }
 
   if (theme) {
-    return (
-      <MobiusThemeContext.Provider value={theme}>
-        {children}
-      </MobiusThemeContext.Provider>
-    );
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
   }
 
   return children;
