@@ -34,5 +34,5 @@ export function MobiusProvider({
     return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
   }
 
-  return children;
+  return <>{children}</>;
 }
