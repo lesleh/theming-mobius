@@ -1,10 +1,15 @@
 import { PropsWithChildren } from "react";
-import { ThemeProvider, defaultTheme } from "@simplybusiness/mobius-core";
+import { Theme } from "@theme-ui/core";
+import { ThemeProvider } from "@simplybusiness/mobius-core";
 import { MobiusComponentContext, MobiusComponentContextType } from "./contexts";
+
+export interface ThemeWithOverrides extends Theme {
+  overrides: Theme;
+}
 
 export interface MobiusContextProps {
   components?: MobiusComponentContextType;
-  theme?: typeof defaultTheme;
+  theme?: ThemeWithOverrides;
 }
 
 export function MobiusProvider({
